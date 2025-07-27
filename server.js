@@ -5,6 +5,9 @@ const connectDB = require('./config/db.js');
 const app  = express();
 const port = process.env.PORT || 3000;
 connectDB();
+
+app.use(express.json({ extended: false }));
+
 app.get('/', (req, res) => res.send('Hello World!'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/profile', require('./routes/api/profile'));
